@@ -2,14 +2,43 @@ package br.com.fiapride.model;
 
 // A Classe define a estrutura. Ela não é o passageiro real, é apenas o modelo.
 public class Passageiro {
-    public String nome;
-    public String cpf; // Novo Atributo
-    public double saldo;
+    private String nome;
+    private String cpf; // Novo Atributo
+    private double saldo;
 
     public Passageiro(String nome, String cpf) {
+        this.setNome(nome);
+        this.setCpf(cpf);
+        this.setSaldo(0);
+    }
+
+    public double getSaldo(){
+        return this.saldo;
+    }
+
+    private void setSaldo(double valor) {
+        if (valor >= 0) {
+            this.saldo = valor;
+        } else {
+            System.out.println("Erro de Segurança: Tentativa de definir saldo negativo bloqueada!");
+        }
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    private void setNome(String nome) {
         this.nome = nome;
-        this.cpf = cpf; // Novo Atributo
-        this.saldo = 0.00;
+    }
+
+    // Faça o mesmo para o cpf (sem regras complexas por enquanto)
+    public String getCpf() {
+        return this.cpf;
+    }
+
+    private void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void adicionarSaldo(double valor) {
